@@ -1,0 +1,424 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <title>Comparação de 4 técnicas de seleção de modelos lineares</title>
+    <meta name="author" content="Athos Damiani">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:3000/content/static/img/ico/favicon.ico">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href="http://localhost:3000/content/static/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="http://localhost:3000/content/static/css/bs_theme.css" rel="stylesheet" type="text/css" media="all">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="http://localhost:3000/content/static/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+    
+
+    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#r-adas-top-menu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://localhost:3000/index.html">
+            R'adas
+          </a>
+        </div>
+        <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="collapse navbar-collapse" id="r-adas-top-menu">
+          <ul class="nav navbar-nav">
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">R Basicão <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasR_Basicão.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li><a href="http://localhost:3000/posts/calculadora.html">R como calculadora</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descritiva <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasDescritiva.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li><a href="http://localhost:3000/posts/medidasResumo.html">Medidas resumo</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Univariada <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasUnivariada.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li class="dropdown-header">Regressão</li>
+      
+      <li><a href="http://localhost:3000/posts/regressaoLinearMultipla.html">Regressão linear múltipla</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown active ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stanford Stat Learning <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasStanford_Stat_Learning.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li class="dropdown-header">Seleção</li>
+      
+      <li class="active">Comparação de 4 técnicas de seleção de modelos lineares</li>
+	  
+    </ul>
+  </li>
+  
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown  "> 
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Mais <i class="fa fa-plus"></i></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasMais.html">Sumário</a></li>
+      <li class="divider"></li>
+
+      
+      <li><a href="http://localhost:3000/posts/Contribuidores.html">Contribuidores</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Quero_contribuir.html">Quero contribuir!</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Sugestao_de_material.html">Sugestões</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Sobre_o_site.html">Sobre o site</a></li>
+      
+    </ul>
+  </li>
+     
+</ul>
+        </div> <!-- /nav-collapse -->
+      </div> <!-- /container-fluid -->
+    </nav> <!-- /navbar -->
+
+    <div class="container" id="top">
+        
+
+
+<div class="row page-header">
+  <div class="">
+    <div class="col-sm-4 col-md-4" id="r-adas-header">
+      <h1><small>Coisas em R sobre R e estatística</small><br></h1>
+    </div> <!-- /span3 -->
+    <div class="col-sm-8 col-md-8">
+      <ol class="breadcrumb">
+  <li><a href="http://localhost:3000/index.html">Home</a></li>
+  
+  <li><a href="http://localhost:3000/categories.html#Stanford_Stat_Learning-ref">Stanford_Stat_Learning</a></li>
+  
+  <li><a href="http://localhost:3000/categories.html#Seleção-ref">Seleção</a></li>
+  
+  <li class="active">simulacaoComparacaoSelecaoDeModelo</li>
+</ol>
+    </div> <!-- /span9 -->
+  </div> <!-- /page-header -->
+</div> <!-- /row-fluid -->
+
+<div class="row">
+  <div class="col-sm-4 col-md-4 panel">
+    <ul class="nav nav-list">
+  <li class="h5">Artigos da seção</li>
+
+  
+  <li class="nav-header">Seleção</li>
+  
+  <li class="active">Comparação de 4 técnicas de seleção de modelos lineares</li>
+  
+</ul>
+
+    <hr />
+    <ul class="nav nav-list">
+  <li class="h5">Tags</li>
+  
+  <li><ul class="nav nav-list">
+    
+    <li><a href="http://localhost:3000/tags.html#Seleção de modelos-ref">Seleção de modelos</a></li>
+    
+  </ul></li>
+  
+</ul>
+    <hr />
+    <ul class="nav nav-list">
+  	<li class="h5">Contribuidores TOP TOP</li>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Athos Damiani</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:athos.damiani@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://www.facebook.com/athos.damiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-facebook-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://github.com/Athospd" class="btn btn-default" target="_newtab">
+					<i class="fa fa-github-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://br.linkedin.com/in/athosdamiani‎" class="btn btn-default" target="_newtab">
+					<i class="fa fa-linkedin-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://plus.google.com/+AthosDamiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-google-plus-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://twitter.com/athos_damiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-twitter-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://lattes.cnpq.br/9889394739787175" class="btn btn-default" target="_newtab">
+					<img src="http://localhost:3000/content/static/img/lattes.png" width="14px" alt="lattes"></img>
+				</a>
+			
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Julio Trecenti</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:julio.trecenti@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+			
+				<a href="http://github.com/juliotrecenti" class="btn btn-default" target="_newtab">
+					<i class="fa fa-github-square fa-lg"></i>
+				</a>
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Lucas Damiani</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:lucaspd16@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	
+</ul>
+  </div> <!-- /span3 -->
+  <div class="col-sm-8 col-md-8">
+    <h1>Comparação de 4 técnicas de seleção de modelos lineares</h1>
+    <div class="markdown-toc">
+<ul><li><a href="#por-fazer...">Por fazer...</a></li><li><a href="#intro">Intro</a></li><li><a href="#requisitos">Requisitos</a></li><li><a href="#simulação-das-variáveis">Simulação das variáveis</a><ul><li><a href="#parâmetros">Parâmetros</a></li><li><a href="#matriz-x">Matriz X</a></li><li><a href="#vetor-epsilon">Vetor <span class="math">\(\epsilon\)</span></a></li><li><a href="#vetor-y">Vetor Y</a></li><li><a href="#tranformando-em-função">Tranformando em função</a></li><li><a href="#simulações">Simulações</a></li></ul></li><li><a href="#seleção-de-modelos">Seleção de modelos</a><ul><li><a href="#funções-úteis">Funções úteis</a></li><li><a href="#banco-de-dados-dos-desvios-médios">Banco de dados dos desvios médios</a></li><li><a href="#resultados">Resultados</a></li></ul></li><li><a href="#considerações">Considerações</a></li><li><a href="#códigos-disponíveis-no-github">Códigos disponíveis no Github <i class="fa fa-github"></i></a></li></ul>
+</div>
+<h2 id="por-fazer...">Por fazer...</h2><ul><li>A técnica Forward stagewise. Só estão implementadas as técnicas <em>forward</em>, <em>backward</em> e <em>best subset</em>.</li></ul><h2 id="intro">Intro</h2><p>O código abaixo reproduz a simulação feita na página 59 do livro <a href="http://statweb.stanford.edu/~tibs/ElemStatLearn/">&quot;Elements of Statistical Learning (2ªed)&quot;</a> que compara 4 abordagens de seleção de modelos lineares:</p><ul><li>Best Subset</li><li>Forward Stepwise</li><li>Backward Stepwise</li><li>Forward Stagewise</li></ul><h2 id="requisitos">Requisitos</h2><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(MASS)
+<span class="kw">library</span>(xtable)
+<span class="kw">library</span>(bestglm)
+<span class="kw">library</span>(ggplot2)</code></pre><h2 id="simulação-das-variáveis">Simulação das variáveis</h2><p>Vamos fazer o passo a passo da simulação de uma resposta Y com os parâmetros definidos no livro. Depois vamos colocar tudo numa função só que gerará Y's com os parâmetros escolhidos.</p><h3 id="parâmetros">Parâmetros</h3><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">300</span>
+p &lt;-<span class="st"> </span><span class="dv">30</span> <span class="co"># supondo 31 com o intercepto</span>
+pairwiseCor &lt;-<span class="st"> </span>.<span class="dv">85</span> <span class="co"># correlação dois a dois</span>
+
+sdX &lt;-<span class="st"> </span><span class="kw">matrix</span>(pairwiseCor, p, p)
+<span class="kw">diag</span>(sdX) &lt;-<span class="st"> </span><span class="dv">1</span>
+
+(mu &lt;-<span class="st"> </span><span class="dv">1</span>:p) <span class="co"># vetor de médias qualquer</span></code></pre><pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+[24] 24 25 26 27 28 29 30</code></pre><pre class="sourceCode r"><code class="sourceCode r">
+sdErro &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="fl">6.25</span>)
+
+BsNaoZeros &lt;-<span class="st"> </span><span class="dv">10</span> <span class="co"># Número de Betas diferentes de zero  (menor ou igual a p)</span></code></pre><h3 id="matriz-x">Matriz X</h3><p>As p = 30 variáveis são duas a duas correlacionadas com correlação de 0.85. As médias foram arbitrariamente escolhidas.</p><pre class="sourceCode r"><code class="sourceCode r">X &lt;-<span class="st"> </span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> N, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> sdX)
+
+<span class="co"># correlações</span>
+<span class="kw">table</span>(<span class="kw">round</span>(<span class="kw">cor</span>(X), <span class="dv">2</span>))</code></pre><pre><code>
+0.82 0.83 0.84 0.85 0.86 0.87 0.88    1 
+   8   66  200  244  246   86   20   30 </code></pre><pre class="sourceCode r"><code class="sourceCode r">
+X &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dv">1</span>, X)
+<span class="kw">dim</span>(X)</code></pre><pre><code>[1] 300  31</code></pre><h3 id="vetor-epsilon">Vetor <span class="math">\(\epsilon\)</span></h3><pre class="sourceCode r"><code class="sourceCode r">epsilon &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dv">0</span>, <span class="dt">sd =</span> sdErro)</code></pre><h3 id="vetor-y">Vetor Y</h3><p>O intercepto igual a zero. Abaixo é feito o sorteio de 10 X's para ter Betas diferentes de zero.</p><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Betas</span>
+B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(BsNaoZeros, <span class="dv">0</span>, <span class="dv">4</span>), <span class="kw">rep</span>(<span class="dv">0</span>, p -<span class="st"> </span>BsNaoZeros))[<span class="kw">sample</span>(p)]
+B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, B) <span class="co"># intercepto igual a zero</span></code></pre><p>Tabelinha bonitinha para apresentar os valores dos parâmetros diferentes de zero e exemplificar o uso de LateX no <code>.Rmd</code>.</p><pre class="sourceCode r"><code class="sourceCode r">params_verdadeiros &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Param =</span> (<span class="kw">sprintf</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">beta_{%s}$&quot;</span>,<span class="dv">0</span>:p)), <span class="dt">Valor =</span> <span class="kw">round</span>(B, <span class="dv">2</span>))
+params_verdadeiros &lt;-<span class="st"> </span>params_verdadeiros[ params_verdadeiros$Valor !=<span class="st"> </span><span class="dv">0</span>, ]
+
+<span class="kw">print</span>(
+  <span class="kw">xtable</span>(params_verdadeiros), 
+  <span class="dt">type=</span><span class="st">&quot;html&quot;</span>,
+  <span class="dt">include.rownames=</span><span class="ot">FALSE</span>
+)</code></pre><!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Wed Mar 05 20:21:44 2014 -->
+<TABLE border=1>
+<TR> <TH> Param</TH> <TH> Valor</TH>  </TR>
+  <TR> <TD> <span class="math">\(\beta_{5}\)</span></TD> <TD align="right"> -4.60</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{11}\)</span></TD> <TD align="right"> 2.37</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{14}\)</span></TD> <TD align="right"> -3.99</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{15}\)</span></TD> <TD align="right"> -1.03</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{18}\)</span></TD> <TD align="right"> -5.64</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{20}\)</span></TD> <TD align="right"> -7.82</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{26}\)</span></TD> <TD align="right"> 1.85</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{27}\)</span></TD> <TD align="right"> -4.17</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{28}\)</span></TD> <TD align="right"> -3.52</TD> </TR>
+  <TR> <TD> <span class="math">\(\beta_{30}\)</span></TD> <TD align="right"> -1.05</TD> </TR>
+   </TABLE>
+
+<p></br> Resposta Y</p><pre class="sourceCode r"><code class="sourceCode r">Y &lt;-<span class="st"> </span>X%*%B +<span class="st"> </span>epsilon</code></pre><h3 id="tranformando-em-função">Tranformando em função</h3><p>Agora tudo que foi feito acima pode virar uma função que gera Y com os parâmetros que quisermos. Só aceita matrizes de covariância uniforme.</p><p>detalhe minúsculo: no livro está escrito que os parâmetros são sorteados de uma N(0, .4), mas eles quiseram dizer N(0, 4).</p><pre class="sourceCode r"><code class="sourceCode r">geraY &lt;-<span class="st"> </span>function(<span class="dt">N =</span> <span class="dv">300</span>,
+                  <span class="dt">p =</span> <span class="dv">30</span>,
+                  <span class="dt">mu =</span> <span class="dv">1</span>:p,
+                  <span class="dt">pairwiseCor =</span> .<span class="dv">85</span>,
+                  <span class="dt">sdX =</span> <span class="dv">1</span>,
+                  <span class="dt">sdErro =</span> <span class="fl">2.5</span>,
+                  <span class="dt">BsNaoZeros =</span> p%/%<span class="dv">3</span>,
+                  <span class="dt">sdB =</span> <span class="dv">4</span>,
+                  <span class="dt">intercepto =</span> <span class="dv">0</span>) {
+  Sigma &lt;-<span class="st"> </span>sdX *<span class="st"> </span><span class="kw">matrix</span>(pairwiseCor, p, p) +<span class="st"> </span><span class="kw">diag</span>(p) *<span class="st"> </span>(<span class="dv">1</span> -<span class="st"> </span>pairwiseCor)
+  X &lt;-<span class="st"> </span><span class="kw">mvrnorm</span>(<span class="dt">n =</span> N, <span class="dt">mu =</span> mu, <span class="dt">Sigma =</span> Sigma)
+  epsilon &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dv">0</span>, <span class="dt">sd =</span> sdErro)
+  B &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(BsNaoZeros, <span class="dv">0</span>, sdB), <span class="kw">rep</span>(<span class="dv">0</span>, p -<span class="st"> </span>BsNaoZeros))[<span class="kw">sample</span>(p)]
+  B &lt;-<span class="st"> </span><span class="kw">c</span>(intercepto, B)
+  Y &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dv">1</span>, X)%*%B +<span class="st"> </span>epsilon
+  <span class="kw">return</span>(<span class="kw">invisible</span>(<span class="kw">list</span>(<span class="dt">X =</span> X, 
+                        <span class="dt">epsilon =</span> epsilon, 
+                        <span class="dt">B =</span> B, 
+                        <span class="dt">Y =</span> Y)))
+}</code></pre><h3 id="simulações">Simulações</h3><p>Para reproduzir.</p><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)</code></pre><p>As simulações ficam guardadas em uma lista. É aqui que muda os parâmetros dos modelos simulados caso queira. Basta colocar como argumento na função <code>geraY()</code>. O default da função é:</p><ul><li>N = 300</li><li>p = 30</li><li>mu = 1:p</li><li>pairwiseCor = .85</li><li>sdX = 1</li><li>sdErro = 2.5</li><li>BsNaoZeros = p%/%3</li><li>sdB = 4</li><li>intercepto = 0</li></ul><pre class="sourceCode r"><code class="sourceCode r">n_simulacoes &lt;-<span class="st"> </span><span class="dv">50</span>
+simulacoes &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:n_simulacoes, function(x) <span class="kw">geraY</span>())</code></pre><h2 id="seleção-de-modelos">Seleção de modelos</h2><h3 id="funções-úteis">Funções úteis</h3><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Função que retorna um data.frame com dimensão (p+1)x(p), com a coluna &#39;k&#39; contendo os coeficientes ajustados do melhor modelo de tamanho &#39;k&#39;. As linhas são definidas pelos parâmetros. Os melhores modelos são selecionados pelo método &#39;method&#39;. O default é &quot;exhaustive&quot; (best subset).</span>
+beta_dos_melhores_de_tam_k &lt;-<span class="st"> </span>function(simulacao, <span class="dt">method =</span> <span class="st">&quot;exhaustive&quot;</span>) {
+  <span class="co"># parametros</span>
+  p &lt;-<span class="st"> </span><span class="kw">ncol</span>(simulacao$X)
+  Xy &lt;-<span class="st"> </span><span class="kw">with</span>(simulacao, <span class="kw">data.frame</span>(<span class="dt">X =</span> X, <span class="dt">y =</span> Y))
+  selecionados &lt;-<span class="st"> </span><span class="kw">regsubsets</span>(y ~<span class="st"> </span>., <span class="dt">data =</span> Xy, <span class="dt">nvmax=</span>(p<span class="dv">+1</span>), <span class="dt">method =</span> method)
+  selecionados_bool &lt;-<span class="st"> </span><span class="kw">summary</span>(selecionados)
+  <span class="co"># faz ajuste para cada um dos melhores modelos de tamanho k e guarda o vetor de coeficientes</span>
+  vetores_de_Bchapeu &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">sapply</span>(<span class="dv">1</span>:p, function(id) {
+    Bchapeu &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, p<span class="dv">+1</span>)
+    Bchapeu[selecionados_bool$which[id, ]] &lt;-<span class="st"> </span><span class="kw">coef</span>(selecionados, id)
+    <span class="kw">return</span>(Bchapeu)
+  }))
+  <span class="kw">return</span>(<span class="kw">invisible</span>(vetores_de_Bchapeu))
+}
+
+<span class="co"># Função que calcula o desvio do Bchapeu em relação ao verdadeiro valor B. </span>
+desvio_do_param_verdadeiro &lt;-<span class="st"> </span>function(Bchapeu, B) {
+  <span class="kw">sqrt</span>(<span class="kw">mean</span>((Bchapeu -<span class="st"> </span>B)^<span class="dv">2</span>))
+}
+
+<span class="co"># Função que devolve o desvio Bchapeu de B para cada tamanho k de uma simulação.</span>
+desvios_de_B &lt;-<span class="st"> </span>function(simulacao, B, method) {
+  desvios &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">beta_dos_melhores_de_tam_k</span>(simulacao, method), desvio_do_param_verdadeiro, <span class="dt">B =</span> B)
+  <span class="kw">return</span>(desvios)
+}</code></pre><h3 id="banco-de-dados-dos-desvios-médios">Banco de dados dos desvios médios</h3><p>BD com os desvios médios das 50 simulações para cada tamanho de modelo.</p><p>Dos 4 métodos, o forward stagewise ainda não foi feito. Ajuda é bem vinda!</p><pre class="sourceCode r"><code class="sourceCode r">metodos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;exhaustive&quot;</span>, <span class="st">&quot;forward&quot;</span>, <span class="st">&quot;backward&quot;</span>)
+
+desvio_medio &lt;-<span class="st"> </span><span class="kw">lapply</span>(metodos, function(metodo) {
+  <span class="kw">cat</span>(metodo)
+  tempo_inicial &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()
+  desvio &lt;-<span class="st"> </span><span class="kw">sapply</span>(simulacoes, desvios_de_B, <span class="dt">B =</span> B, <span class="dt">method =</span> metodo)
+  desvio_medio &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(desvio)
+  p &lt;-<span class="st"> </span><span class="kw">length</span>(desvio_medio)
+  desvio_medio &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">desvio_medio =</span> desvio_medio/<span class="kw">max</span>(desvio_medio),
+                              <span class="dt">tamanho =</span> <span class="dv">1</span>:p,
+                              <span class="dt">method =</span> metodo)
+  duracao &lt;-<span class="st"> </span><span class="kw">Sys.time</span>() -<span class="st"> </span>tempo_inicial
+  <span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot; OK (&quot;</span>,<span class="kw">round</span>(<span class="kw">as.numeric</span>(duracao),<span class="dv">0</span>),<span class="st">&quot; &quot;</span>,<span class="kw">attr</span>(duracao,<span class="st">&quot;units&quot;</span>),<span class="st">&quot;)</span><span class="ch">\n</span><span class="st">&quot;</span>))
+  <span class="kw">return</span>(desvio_medio)
+})</code></pre><pre><code>exhaustive OK (29 secs)
+forward OK (11 secs)
+backward OK (12 secs)</code></pre><pre class="sourceCode r"><code class="sourceCode r">
+desvio_medio &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, desvio_medio)</code></pre><h3 id="resultados">Resultados</h3><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(desvio_medio, <span class="kw">aes</span>(<span class="dt">x =</span> tamanho, <span class="dt">y =</span> desvio_medio, <span class="dt">colour =</span> method)) +
+<span class="st">  </span><span class="kw">geom_point</span>() +
+<span class="st">  </span><span class="kw">geom_line</span>() +
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Tamanho&quot;</span>, 
+       <span class="dt">y =</span> <span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">plain</span>(E),<span class="st">&quot;||&quot;</span>,<span class="kw">hat</span>(beta),<span class="st">&quot;(k) - &quot;</span>,beta,<span class="st">&quot;||&quot;</span>)^<span class="dv">2</span>),
+       <span class="dt">colour =</span> <span class="st">&quot;Método&quot;</span>) +
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre><div class="figure"><img src="../content/static/figure/desvioMedioComparacao.png" alt="plot of chunk desvioMedioComparacao" /><p class="caption">plot of chunk desvioMedioComparacao</p></div><h2 id="considerações">Considerações</h2><ol start="2" style="list-style-type: decimal"><li>Os 3 outros métodos deram resultados parecidos, mas o &quot;best subset&quot; demorou quase o triplo do tempo.</li><li>O viés médio foi calculado como <span class="math">\[E||\hat{\beta}(k) - \beta||^2 = \frac{1}{50}\sum^{50}_{i=1}\left(\frac{1}{10}\sum^{10}_{i=1}\hat{(\beta}_i(k) - \beta_i)^2\right)\]</span> e depois dividi pelo máximo para ficar entre 0 e 1. O problema é que não ficou como no livro. Precisa conferir se é isso mesmo.</li></ol><h2 id="códigos-disponíveis-no-github">Códigos disponíveis no Github <i class="fa fa-github"></i></h2><ul><li><a href="https://github.com/Athospd/R-adas/raw/master/Rmd/simulacaoComparacaoSelecaoDeModelo.Rmd">R markdown</a></li><li><a href="https://github.com/Athospd/R-adas/raw/master/md/simulacaoComparacaoSelecaoDeModelo.md">markdown</a></li><li><a href="https://github.com/Athospd/R-adas/raw/master/R/simulacaoComparacaoSelecaoDeModelo.R">R</a></li><li><a href="https://github.com/Athospd/R-adas/">Todas as postagens</a></li></ul>
+
+    <div class="fb-like" data-href="http://localhost:3000" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    <br />
+    <div class="fb-comments col-sm-12 col-md-12" data-href="http://localhost:3000/posts/simulacaoComparacaoSelecaoDeModelo" data-numposts="5" data-colorscheme="light" style="margin: 0 auto; display: table;"></div>
+  </div> <!-- /span9 -->
+  <script type="text/javascript">
+    var tb = jQuery("table");
+    tb.removeAttr("border");
+    var classes = ["table", "table-striped", "table-hover", "table-condensed", "table-responsive"];
+    for(var classe in classes){
+      tb.addClass(classes[classe])
+    };
+
+  </script>
+</div> <!-- /row -->
+
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <p class="toplink">
+            <span class="toplink pull-left"><a href="#top"><i class="fa fa-chevron-up"></i> topo</a></span>
+          </p>
+        </div> <!-- /col-sm-12 col-md-12 -->
+      </div> <!-- /row -->  
+      <div class="row" id="bottom">
+        <div class="col-sm-12 col-md-12">
+          <p class="footer">
+            &copy; 2014
+            Athos Damiani -
+            
+            licenciado sob CC-BY-SA <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://localhost:3000/content/static/img/cc-by-sa80x15.png" width="80" height="15" alt="Creative Commons BY-SA" /></a> - Site baseado em <a href="http://www.uni-kiel.de/psychologie/rexrepos/">RExRepos</a> <a href="http://github.com/dwoll/RExRepos"><i class="fa fa-github"></i></a>
+            
+          </p>
+        </div> <!-- /col-sm-12 col-md-12 -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </body>
+</html>

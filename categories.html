@@ -1,0 +1,389 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <title>Categories</title>
+    <meta name="author" content="Athos Damiani">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="shortcut icon" href="http://localhost:3000/content/static/img/ico/favicon.ico">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link href="http://localhost:3000/content/static/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+    <link href="http://localhost:3000/content/static/css/bs_theme.css" rel="stylesheet" type="text/css" media="all">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="http://localhost:3000/content/static/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+    
+
+    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#r-adas-top-menu">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://localhost:3000/index.html">
+            R'adas
+          </a>
+        </div>
+        <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="collapse navbar-collapse" id="r-adas-top-menu">
+          <ul class="nav navbar-nav">
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">R Basicão <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasR_Basicão.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li><a href="http://localhost:3000/posts/calculadora.html">R como calculadora</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Descritiva <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasDescritiva.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li><a href="http://localhost:3000/posts/medidasResumo.html">Medidas resumo</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Univariada <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasUnivariada.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li class="dropdown-header">Regressão</li>
+      
+      <li><a href="http://localhost:3000/posts/regressaoLinearMultipla.html">Regressão linear múltipla</a></li>
+      
+    </ul>
+  </li>
+  
+  <li class="dropdown  ">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stanford Stat Learning <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasStanford_Stat_Learning.html">Sumário</a></li>
+      <li class="divider"></li>
+      
+      <li class="dropdown-header">Seleção</li>
+      
+      <li><a href="http://localhost:3000/posts/simulacaoComparacaoSelecaoDeModelo.html">Comparação de 4 técnicas de seleção de modelos lineares</a></li>
+      
+    </ul>
+  </li>
+  
+</ul>
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown  "> 
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Mais <i class="fa fa-plus"></i></a>
+    <ul class="dropdown-menu">
+      <li><a href="http://localhost:3000/radasMais.html">Sumário</a></li>
+      <li class="divider"></li>
+
+      
+      <li><a href="http://localhost:3000/posts/Contribuidores.html">Contribuidores</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Quero_contribuir.html">Quero contribuir!</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Sugestao_de_material.html">Sugestões</a></li>
+      
+      <li><a href="http://localhost:3000/posts/Sobre_o_site.html">Sobre o site</a></li>
+      
+    </ul>
+  </li>
+     
+</ul>
+        </div> <!-- /nav-collapse -->
+      </div> <!-- /container-fluid -->
+    </nav> <!-- /navbar -->
+
+    <div class="container" id="top">
+        
+
+<div class="row page-header">
+  <div id="r-adas-header">
+      <h1><small>Coisas em R sobre R e estatística</small></h1><br/>  
+  </div>
+</div> <!-- /page-header -->
+
+<div class="row">
+  <div class="col-sm-8 col-md-8">
+    <h1>Categories</h1>
+    <div><div class="fb-like" data-href="http://localhost:3000" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></div> 
+    <ul class="tag_box inline">
+
+<li>
+<a href="#R_Basicão-ref">R_Basicão <span>1</span></a>
+</li>
+
+<li>
+<a href="#Mais-ref">Mais <span>4</span></a>
+</li>
+
+<li>
+<a href="#Descritiva-ref">Descritiva <span>1</span></a>
+</li>
+
+<li>
+<a href="#Univariada-ref">Univariada <span>1</span></a>
+</li>
+
+<li>
+<a href="#Regressão-ref">Regressão <span>1</span></a>
+</li>
+
+<li>
+<a href="#Stanford_Stat_Learning-ref">Stanford_Stat_Learning <span>1</span></a>
+</li>
+
+<li>
+<a href="#Seleção-ref">Seleção <span>1</span></a>
+</li>
+
+</ul>
+
+
+<h2 id="R_Basicão-ref">
+R_Basicão
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/calculadora.html">R como calculadora</a>
+</li>
+
+</ul>
+
+<h2 id="Mais-ref">
+Mais
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/Contribuidores.html">Quem são os contribuidores</a>
+</li>
+
+<li>
+<a href="http://localhost:3000/posts/Quero_contribuir.html">Quero contribuir!</a>
+</li>
+
+<li>
+<a href="http://localhost:3000/posts/Sobre_o_site.html">Sobre o site</a>
+</li>
+
+<li>
+<a href="http://localhost:3000/posts/Sugestao_de_material.html">Sugestões</a>
+</li>
+
+</ul>
+
+<h2 id="Descritiva-ref">
+Descritiva
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/medidasResumo.html">Medidas resumo</a>
+</li>
+
+</ul>
+
+<h2 id="Univariada-ref">
+Univariada
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/regressaoLinearMultipla.html">Regressao linear múltipla</a>
+</li>
+
+</ul>
+
+<h2 id="Regressão-ref">
+Regressão
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/regressaoLinearMultipla.html">Regressao linear múltipla</a>
+</li>
+
+</ul>
+
+<h2 id="Stanford_Stat_Learning-ref">
+Stanford_Stat_Learning
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/simulacaoComparacaoSelecaoDeModelo.html">Comparação de 4 técnicas de seleção de modelos lineares</a>
+</li>
+
+</ul>
+
+<h2 id="Seleção-ref">
+Seleção
+</h2>
+<ul>
+
+<li>
+<a href="http://localhost:3000/posts/simulacaoComparacaoSelecaoDeModelo.html">Comparação de 4 técnicas de seleção de modelos lineares</a>
+</li>
+
+</ul>
+
+
+
+  </div> <!-- /span9 -->
+
+  <div class="col-sm-4 col-md-4">
+    <ul class="nav nav-list">
+  <li class="h5">Tags</li>
+  
+  <li><a href="http://localhost:3000/tags.html"><i class="fa fa-tags fa-lg"></i> Lista de tags</a></li>
+  
+</ul>
+    <hr />
+    <ul class="nav nav-list">
+  	<li class="h5">Contribuidores TOP TOP</li>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Athos Damiani</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:athos.damiani@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://www.facebook.com/athos.damiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-facebook-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://github.com/Athospd" class="btn btn-default" target="_newtab">
+					<i class="fa fa-github-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://br.linkedin.com/in/athosdamiani‎" class="btn btn-default" target="_newtab">
+					<i class="fa fa-linkedin-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://plus.google.com/+AthosDamiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-google-plus-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://twitter.com/athos_damiani" class="btn btn-default" target="_newtab">
+					<i class="fa fa-twitter-square fa-lg"></i>
+				</a>
+			
+			
+				<a href="http://lattes.cnpq.br/9889394739787175" class="btn btn-default" target="_newtab">
+					<img src="http://localhost:3000/content/static/img/lattes.png" width="14px" alt="lattes"></img>
+				</a>
+			
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Julio Trecenti</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:julio.trecenti@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+			
+				<a href="http://github.com/juliotrecenti" class="btn btn-default" target="_newtab">
+					<i class="fa fa-github-square fa-lg"></i>
+				</a>
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	
+	<div class="panel panel-default ">
+		<div class="panel-heading social-heading">
+			<a href="#" class="disabled"><h5><i class="fa fa-user"></i> Lucas Damiani</h5></a>
+		</div>
+		<div class="btn-group btn-group-justified">
+			
+				<a href="mailto:lucaspd16@gmail.com?Subject=R-adas%20ghpages" class="btn btn-default" target="_top">
+					<i class="fa fa-envelope fa-lg"></i>
+				</a>
+			
+			
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	
+</ul>
+  </div> <!-- /span3 -->
+</div> <!-- /row -->
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <p class="toplink">
+            <span class="toplink pull-left"><a href="#top"><i class="fa fa-chevron-up"></i> topo</a></span>
+          </p>
+        </div> <!-- /col-sm-12 col-md-12 -->
+      </div> <!-- /row -->  
+      <div class="row" id="bottom">
+        <div class="col-sm-12 col-md-12">
+          <p class="footer">
+            &copy; 2014
+            Athos Damiani -
+            
+            licenciado sob CC-BY-SA <a href="http://creativecommons.org/licenses/by-sa/3.0/"><img src="http://localhost:3000/content/static/img/cc-by-sa80x15.png" width="80" height="15" alt="Creative Commons BY-SA" /></a> - Site baseado em <a href="http://www.uni-kiel.de/psychologie/rexrepos/">RExRepos</a> <a href="http://github.com/dwoll/RExRepos"><i class="fa fa-github"></i></a>
+            
+          </p>
+        </div> <!-- /col-sm-12 col-md-12 -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </body>
+</html>
